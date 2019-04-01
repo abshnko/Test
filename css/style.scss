@@ -1,0 +1,377 @@
+html, body {
+    margin: 0;
+    padding:0;
+    background-color: rgb(255, 255, 255);
+    font-family: 'Titillium Web', sans-serif;
+}
+
+
+//mq tablet
+$tablet: 600px;
+@mixin tablet {
+    @media (min-width:#{$tablet}) {
+        @content;
+    }
+}
+//mq desktop
+$desktop: 860px;
+@mixin desktop {
+    @media (min-width:#{$desktop}) {
+        @content;
+    }
+}
+a {
+    text-decoration: none;
+    color: rgb(112, 112, 112);
+}
+a:hover{
+    letter-spacing: 3px;
+    transition: all 0.3s ease 0s;
+}
+.button {
+    padding: 8px 20px;
+    //border: 1px solid rgb(100, 175, 100);
+    background-color: rgb(177, 208, 236);
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    margin: 5px 10px 5px 0;
+    text-align: center;
+    align-content: center;
+    
+    
+}
+.button:hover{
+    letter-spacing: 3px;
+    background-color: rgb(73, 110, 143);
+    color:#fff;
+    transition: all 0.3s ease 0s;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.box_shadow{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin-bottom: 10px;
+}
+.responsive{
+    width:100%;
+    height: auto;
+}
+.container {
+    width: 92%;
+    margin: auto;
+    height: 100%;
+    @include desktop{
+        width: 80%;
+    }
+
+    display: grid;
+    grid-template-columns: 25% auto;
+    grid-template-areas: 
+        'header header'
+        'main main'
+        'side side'
+        'reviews reviews'
+        'footer footer';
+
+        @include desktop {
+            grid-template-areas: 
+            'header header'
+            'side main'
+            'reviews reviews'
+            'footer footer';
+            grid-gap: 60px;
+        }
+
+    .header {
+        grid-area: header;
+        background-color: rgb(255, 255, 255);
+        height: 50px;
+        position: sticky;
+        top:0;
+        display: grid;
+        grid-template-columns: 50px auto 225px;
+        grid-template-areas: 
+            'logo . menu';
+
+        @include desktop{
+            grid-template-columns: 50px auto 300px;
+        }
+        .logo {
+            grid-area: logo;
+            color: rgb(112, 112, 112);
+            padding-top:13px;
+            
+        }  
+        .menu {
+            grid-area: menu;
+            background-color: rgb(255, 255, 255);
+
+            display:grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-gap: 5px;
+
+            .menu_item{
+                text-align: center;
+                font-size: 16px;
+                padding-top: 15px;
+                color:rgb(112, 112, 112);
+                @include desktop{
+                    font-size: 20px;
+                }
+            }
+        }   
+
+    }
+    
+    .main {
+        grid-area: main;
+        background-color: rgb(255, 255, 255);
+        display:grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            'showcase'
+            'our_work';
+
+        .showcase {
+            grid-area: showcase;
+
+            display: grid;
+            grid-template-columns: 50% auto;
+            grid-template-areas: 
+                'showcase_photo showcase_photo'
+                'showcase_description showcase_description';
+
+            .showcase_photo{
+                grid-area: showcase_photo;
+                margin: 0 10px;
+                .image {
+                    border-radius: 10px;
+                    background-image: url("/img/showcase_desktop.jpg");
+                    max-width: 100%;
+                    background-position: center;
+                    background-size: 100%;
+                    background-repeat: no-repeat;
+                    
+                    min-height: 40vw;
+                    
+                    height:auto;
+                    @include desktop{
+                        min-height: 20vw;
+                    }   
+                }
+                hr{
+                    border: 3px solid rgb(105, 167, 224);
+                    border-radius: 5px;
+                }
+                .sub_heading{
+                    margin: 15px 0 0;
+                    font-size: 22px;
+                    font-weight: 100;
+
+                    @include desktop{
+                        font-size: 30px;
+                    }
+                }
+                .sub_heading::after{
+                    content: 'Slogan';
+                    font-size: 20px;
+                    margin: 0 0 0 10px;
+                }
+                
+            }
+            .showcase_description{
+                grid-area: showcase_description;
+                
+                .description{
+                    margin: 0 0 10px;
+                    @include desktop{
+                        font-size: 20px;
+                    }
+                }
+                .main_heading {
+                    margin:15px 0 0;
+                    font-size: 40px;
+                    font-weight: 100;
+                    @include desktop{
+                        font-size: 60px;
+                    }
+                    
+                }
+            }
+            
+            
+        }
+        .our_work {
+            grid-area: our_work;
+            display: grid;
+            grid-template-columns: 50% auto;
+            grid-template-areas: 
+                'our_work_item1 our_work_item1'
+                'our_work_item2 our_work_item2';
+
+            @include tablet{
+                grid-template-areas: 
+                'our_work_item1 our_work_item2';
+                grid-gap: 5px;
+            }
+
+            .sub_heading{
+                margin: 15px 0 0;
+                font-size:20px;
+                font-weight: 200;
+                margin-left: 5px;
+            }
+            img {
+                border-radius: 10px;
+            }
+            img:hover{
+                transition: transform .5s ease;
+                transform: scale(1.2);
+            }
+            .our_work_item1 {
+                grid-area: our_work_item1;
+            }
+            .our_work_item2 {
+                grid-area: our_work_item2;
+            }
+        }
+        
+    }
+    .reviews {
+        grid-area: reviews;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: 
+            'reviews_item1 reviews_item1 reviews_item1'
+            'reviews_item2 reviews_item2 reviews_item2'
+            'reviews_item3 reviews_item3 reviews_item3';
+        margin-bottom: 30px; 
+
+        @include desktop{
+            grid-template-areas: 
+            'reviews_item1 reviews_item2 reviews_item3';
+            grid-gap: 10px;
+        }
+
+        .review {
+            padding: 0 15px;
+            font-style: italic;
+        }
+        .reviewer{
+            padding: 0 15px;
+        }
+        .reviews_item1{
+            grid-area: reviews_item1;
+            border-radius: 10px;
+        }
+        .reviews_item2{
+            grid-area: reviews_item2;
+            border-radius: 10px;
+        }
+        .reviews_item3{
+            grid-area: reviews_item3;
+            border-radius: 10px;
+        }
+    }
+    .side {
+        grid-area: side;
+        background-color: rgb(255, 255, 255);
+
+        @include desktop{
+            margin-top: 15px;
+        }
+
+        //display:grid;
+        //grid-template-columns: 1fr;
+        //grid-template-areas: 
+            //'side_item'
+            //'side_item'
+            //'side_item';
+        .side_item{
+            margin-bottom: 30px;
+        }
+        
+        h3{
+            margin: 0;
+            font-weight: 300;
+            font-size: 20px;
+            @include desktop{
+                font-size: 30px;
+            }
+        }
+
+        p{
+            margin: 0 0 15px 0;
+            line-height: 23px;
+            @include desktop{
+                font-size: 18px;
+
+            }
+        }
+
+        a{
+            font-size: 15px;
+            
+        }
+
+        hr{
+            margin-top:30px;
+        }
+        
+    }
+    
+}
+.container_footer{
+    width: 80%;
+    margin: auto;
+   .footer {
+        grid-area: footer;
+        background-color: rgb(50, 73, 94);
+        color:#fff;
+        border-radius: 5px 5px 0 0;
+
+        display: grid;
+        grid-template-columns: 50% auto;
+        grid-template-areas: 
+            'contacts contacts'
+            'footer_item footer_item';
+
+            @include tablet{
+                
+                grid-template-areas: 
+                    'contacts footer_item';
+            }
+
+        h4{
+            margin: 20px 0px 0 10px;
+            text-align: center;
+            font-weight: 300;
+            font-size: 15px;
+            @include desktop{
+                font-size: 20px;
+                
+            }
+        }    
+
+        p{
+            margin: 5px 10px;
+            text-align: center;
+            font-size: 18px;
+            @include desktop{
+                font-size: 20px;
+                
+                padding: 0 80px 0 80px;
+            }
+        }
+
+        .contacts{
+            grid-area: contacts;
+        }
+        .footer_item{
+            grid-area: footer_item;
+            border-left: 0.05px solid rgb(119, 119, 119);
+            
+        }
+    }
+}
+ 
