@@ -163,7 +163,7 @@ a:hover {
 
 .container .main .showcase .showcase_photo .image {
   border-radius: 10px;
-  background-image: url("/img/showcase_desktop.jpg");
+  background-image: url("abshnko/img/showcase_desktop.jpg");
   max-width: 100%;
   background-position: center;
   background-size: 100%;
